@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style type="text/css">
+    .container {
+      position: relative;
+    }
+    .featured {
+      transition: 0.5s;
+      opacity: 1;
+      filter: blur(10px);
+      -webkit-filter: blur(10px);    
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+    .hidden {
+      opacity: 0;
+    }
+    .loaded {
+      filter: blur(0);
+      -webkit-filter: (0);
+    }
+  </style>
+  <script type="text/javascript">
+    window.addEventListener("load", event => {
+      var original = document.querySelector('img#original');
+      var isLoaded = original.complete && original.naturalHeight !== 0;
+      if (isLoaded) {
+        var preview = document.querySelector('img#preview');
+        preview.classList.add('hidden');
+        original.classList.add('loaded');
+        original.classList.remove('hidden');
+      }
+    });
+  </script>
+</head>
+<body>
+  <div class="container">
+    <img 
+      src="https://i2.wp.com/digital-photography-school.com/wp-content/uploads/2011/07/outdoor-portraits-1.jpg?resize=680%2C399&ssl=1"
+      id="preview"
+      class="featured"
+      alt="Earth (loading)"
+      style="width: 100%;"
+    />
+    <img
+      src="https://i2.wp.com/digital-photography-school.com/wp-content/uploads/2011/07/outdoor-portraits-1.jpg?resize=5000%2C2993&ssl=1" 
+      id="original"
+      class="featured hidden"
+      alt="Earth (loading)"
+      style="width: 100%;"
+    />
+  </div>
+</body>
+</html>
